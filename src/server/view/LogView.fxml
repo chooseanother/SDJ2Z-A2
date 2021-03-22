@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="server.view.LogViewController">
+<AnchorPane prefHeight="371.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="server.view.LogViewController">
    <children>
-      <Button layoutX="245.0" layoutY="223.0" mnemonicParsing="false" onAction="#onChat" text="Chat" />
+      <TextArea fx:id="logTextArea" layoutX="14.0" layoutY="14.0" prefHeight="299.0" prefWidth="576.0" />
+      <HBox alignment="CENTER" layoutX="2.0" layoutY="313.0" prefHeight="74.0" prefWidth="600.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#onChat" text="Chat">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
