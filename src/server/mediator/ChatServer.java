@@ -38,7 +38,7 @@ public class ChatServer implements Runnable{
             }
         }
         catch (Exception e){
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 }
