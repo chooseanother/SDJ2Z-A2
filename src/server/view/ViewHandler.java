@@ -17,7 +17,7 @@ public class ViewHandler {
 
     public void start(Stage primaryStage){
         this.primaryStage = primaryStage;
-        openView(View.LOGIN);
+        openView(View.CHAT);
     }
 
     public void openView(View view){
