@@ -3,6 +3,7 @@ package server;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import server.mediator.ChatServer;
+import server.model.Message;
 import server.model.Model;
 import server.model.ModelManager;
 import server.view.ViewHandler;
