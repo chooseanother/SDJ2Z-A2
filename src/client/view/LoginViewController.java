@@ -1,7 +1,7 @@
 package client.view;
 
-import javafx.fxml.FXML;
 
+import javafx.fxml.FXML;
 
 public class LoginViewController extends ViewController {
     @Override
