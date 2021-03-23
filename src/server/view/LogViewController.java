@@ -1,13 +1,14 @@
 package server.view;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 
 import server.viewmodel.LogViewModel;
 
 public class LogViewController extends ViewController {
     @FXML
-    private TextArea logTextArea;
+    private ListView<String> logTextArea;
     private LogViewModel viewModel;
 
     public LogViewController() {
@@ -17,7 +18,8 @@ public class LogViewController extends ViewController {
     protected void init()
     {
         init(getViewHandler() , getViewModelFactory() ,getRoot());
-        logTextArea.textProperty().bind(viewModel.getLogTextArea());
+        logTextArea.setItems(viewModel.getLogTextArea());
+
     }
 
     @Override

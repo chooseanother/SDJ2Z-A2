@@ -1,14 +1,8 @@
 package server.view;
 
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.Region;
-import server.model.Message;
-import server.viewmodel.ChatViewModel;
 import server.viewmodel.SimpleMessagesViewModel;
 
 public class ChatViewController extends ViewController{

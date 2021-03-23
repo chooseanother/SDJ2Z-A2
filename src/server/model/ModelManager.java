@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class ModelManager implements Model {
     MessageList messageList;
     private PropertyChangeSupport property;
+    private LogMultiton multiton;
 
 
     public ModelManager() {
@@ -20,6 +21,12 @@ public class ModelManager implements Model {
     public void addMessage(Message messageObject) {
         messageList.add(messageObject);
         property.firePropertyChange("Message",messageObject.getMsg(),messageObject);
+    }
+
+    @Override
+    public void addLog(String log) {
+        multiton.addLog(log);
+        property.firePropertyChange("log" ,null, log);
     }
 
     @Override
