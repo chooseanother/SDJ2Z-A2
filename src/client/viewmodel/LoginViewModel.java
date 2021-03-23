@@ -20,14 +20,14 @@ public class LoginViewModel {
         password.setValue(null);
     }
 
-    public String getPassword()
+    public StringProperty getPassword()
     {
-        return password.get();
+        return password;
     }
 
-    public String getUsername()
+    public StringProperty getUsername()
     {
-        return username.get();
+        return username;
     }
 
     public boolean accept(){
