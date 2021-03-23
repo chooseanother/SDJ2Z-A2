@@ -44,8 +44,8 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="204.0" prefWidth="173.0" spacing="20.0">
                <children>
-                  <TextField fx:id="usernameLabel" />
-                  <TextField fx:id="passwordLabel" />
+                  <TextField fx:id="usernameField" />
+                  <TextField fx:id="passwordField" />
                </children>
             </VBox>
          </children>
