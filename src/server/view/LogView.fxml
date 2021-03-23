@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="371.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="server.view.LogViewController">
+<AnchorPane prefHeight="371.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="server.view.LogViewController">
    <children>
       <TextArea fx:id="logTextArea" layoutX="14.0" layoutY="14.0" prefHeight="299.0" prefWidth="576.0" />
       <HBox alignment="CENTER" layoutX="2.0" layoutY="313.0" prefHeight="74.0" prefWidth="600.0">
