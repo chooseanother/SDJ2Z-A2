@@ -21,6 +21,6 @@ public class LoginViewController extends ViewController {
 
     public void onRegister(ActionEvent actionEvent)
     {
-        //getViewHandler().openView(View.REGISTER);
+        getViewHandler().openView(View.REGISTER);
     }
 }
