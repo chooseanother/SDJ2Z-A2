@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="445.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="server.view.RegisterViewController">
+   <children>
+      <HBox alignment="CENTER" layoutY="316.0" prefHeight="70.0" prefWidth="445.0" spacing="150.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#onBack" text="Back">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#onRegister" text="Register">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <HBox layoutY="87.0" prefHeight="204.0" prefWidth="445.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="204.0" prefWidth="224.0" spacing="20.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" wrappingWidth="97.89453125">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="91.13671875">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="204.0" prefWidth="173.0" spacing="20.0">
+               <children>
+                  <TextField fx:id="usernameLabel" />
+                  <TextField fx:id="passwordLabel" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="445.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Registe">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <Label fx:id="errorLabel" layoutX="177.0" layoutY="276.0" text="error label" textFill="RED">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
