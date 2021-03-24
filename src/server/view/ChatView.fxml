@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="433.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="server.view.ChatViewController">
+<AnchorPane prefHeight="400.0" prefWidth="403.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="server.view.ChatViewController">
    <children>
       <HBox alignment="CENTER" layoutY="328.0" prefHeight="55.0" prefWidth="433.0" spacing="100.0">
          <children>
@@ -34,10 +34,10 @@
             </Button>
          </children>
       </HBox>
-      <TableView fx:id="chatTextArea" layoutX="14.0" layoutY="14.0" prefHeight="229.0" prefWidth="403.0">
+      <TableView fx:id="chatTextArea" layoutX="15.0" layoutY="14.0" prefHeight="229.0" prefWidth="403.0">
         <columns>
            <TableColumn fx:id="Name" editable="false" prefWidth="75.0" sortType="DESCENDING" text="Name" />
-          <TableColumn fx:id="Message" editable="false" prefWidth="324.0" sortType="DESCENDING" text="Meesage" />
+          <TableColumn fx:id="Message" editable="false" maxWidth="330.0" minWidth="330.0" prefWidth="330.0" sortType="DESCENDING" text="Meesage" />
         </columns>
       </TableView>
    </children>
