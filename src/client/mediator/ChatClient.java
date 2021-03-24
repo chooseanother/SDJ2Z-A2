@@ -34,7 +34,7 @@ public class ChatClient implements Model {
     public void receive(String json){
 
     }
-
+/*
     @Override
     public void addListener(PropertyChangeListener listener) {
 
@@ -43,5 +43,5 @@ public class ChatClient implements Model {
     @Override
     public void removeListener(PropertyChangeListener listener) {
 
-    }
+    }*/
 }
