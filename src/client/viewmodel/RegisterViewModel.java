@@ -1,8 +1,9 @@
-package server.viewmodel;
+package client.viewmodel;
 
+import client.model.Model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import server.model.Model;
+
 
 public class RegisterViewModel
 {

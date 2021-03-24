@@ -1,10 +1,10 @@
-package server.view;
+package client.view;
 
+import client.viewmodel.RegisterViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import server.viewmodel.RegisterViewModel;
 
 public class RegisterViewController extends ViewController
 {
