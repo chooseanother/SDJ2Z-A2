@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class ServerApplication extends Application {
     private ChatServer chatServer;
-    @Override public void start(Stage primaryStage){
+    @Override public void start(Stage primaryStage) {
         Model model = new ModelManager();
         ViewModelFactory viewModelFactory = new ViewModelFactory(model);
         ViewHandler view = new ViewHandler(viewModelFactory);

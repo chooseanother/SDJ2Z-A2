@@ -52,6 +52,6 @@ public class ChatViewController extends ViewController {
     }
 
     public void onSend(ActionEvent actionEvent) {
-        getViewModelFactory().getChatViewModel().createMessageObject();
+        getViewModelFactory().getChatViewModel().addMessage();
     }
 }

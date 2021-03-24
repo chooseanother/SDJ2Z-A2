@@ -24,7 +24,7 @@ public class ViewHandler {
         ViewController viewController = view.getViewController(this,viewModelFactory);
         Region root = viewController.getRoot();
         currentScene.setRoot(root);
-        String title = "";
+        String title = "Server";
 
         if (root.getUserData() != null)
         {
