@@ -7,9 +7,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
+import javafx.util.Callback;
 import server.model.Message;
 import server.viewmodel.ChatViewModel;
 import server.viewmodel.SimpleMessagesViewModel;
+
+import javax.swing.text.AbstractDocument;
 
 public class ChatViewController extends ViewController{
 
@@ -17,6 +20,7 @@ public class ChatViewController extends ViewController{
     public TableColumn<SimpleMessagesViewModel,String> Message;
     public TableView<SimpleMessagesViewModel> chatTextArea;
     public TextField TextToBeSent;
+
     @FXML private Button Send,Log,Logout;
 
     @Override
@@ -25,7 +29,12 @@ public class ChatViewController extends ViewController{
         Message.setCellValueFactory(cellData -> cellData.getValue().getMsg());
         chatTextArea.setItems(getViewModelFactory().getChatViewModel().getList());
         TextToBeSent.textProperty().bindBidirectional(getViewModelFactory().getChatViewModel().getMsg());
+        chatTextArea.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
+
+
     }
+
+
 
     @Override public void reset(){
         getViewModelFactory().getChatViewModel().clear();

@@ -24,7 +24,7 @@ public class ChatViewModel implements PropertyChangeListener {
         this.usr = new SimpleStringProperty();
         this.msg = new SimpleStringProperty();
         list = FXCollections.observableArrayList();
-        //  loadFromModel();
+        loadFromModel();
     }
 
     public void clear() {
@@ -61,16 +61,15 @@ public class ChatViewModel implements PropertyChangeListener {
         Platform.runLater(() ->
         {
             if (evt.getPropertyName().equals("Message")) {
-                System.out.println( evt.getNewValue());
+                //
             }
         });
     }
 
     public Message createMessageObject() {
-        System.out.println(msg);
         Message m = new Message("david", getMsg().get());
-        System.out.println(msg.get());
         model.addMessage(m);
+        SendMessage(m);
         return m;
     }
 }
