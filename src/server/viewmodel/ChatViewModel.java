@@ -61,15 +61,26 @@ public class ChatViewModel implements PropertyChangeListener {
         Platform.runLater(() ->
         {
             if (evt.getPropertyName().equals("Message")) {
-                //
+                SendMessage((Message) evt.getNewValue());
             }
         });
     }
 
+    public void addMessage()
+    {
+model.addMessage(createMessageObject());
+    }
+
     public Message createMessageObject() {
-        Message m = new Message("david", getMsg().get());
-        model.addMessage(m);
-        SendMessage(m);
-        return m;
+        try {
+            Message m = new Message("david", getMsg().get());
+            return m;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+
     }
 }
