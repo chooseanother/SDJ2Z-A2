@@ -2,9 +2,7 @@ package server.view;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
 
-import server.viewmodel.LogViewModel;
 
 public class LogViewController extends ViewController {
     @FXML

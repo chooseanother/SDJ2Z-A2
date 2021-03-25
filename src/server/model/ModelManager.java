@@ -5,9 +5,12 @@ import server.mediator.ChatServer;
 import server.model.MessageList;
 import server.model.Model;
 
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.LineNumberReader;
 import java.util.ArrayList;
 
 public class ModelManager implements Model {
@@ -37,7 +40,6 @@ public class ModelManager implements Model {
         property.firePropertyChange("Message",messageObject.getMsg(),messageObject);
     }
 
-    @Override
     public void addLog(String log) {
         multiton = LogMultiton.getInstance(new DateTime().getSortableDate());
         multiton.addLog(log);
