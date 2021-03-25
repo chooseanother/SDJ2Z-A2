@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import server.model.Message;
 import server.model.Model;
 
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -16,6 +17,7 @@ public class ChatViewModel implements PropertyChangeListener {
     private Model model;
     private ObservableList<SimpleMessagesViewModel> list;
     private StringProperty usr, msg;
+
 
 
     public ChatViewModel(Model model) {
@@ -26,6 +28,8 @@ public class ChatViewModel implements PropertyChangeListener {
         list = FXCollections.observableArrayList();
         loadFromModel();
     }
+
+
 
     public void clear() {
         // errorProperty.setValue("");
@@ -38,7 +42,6 @@ public class ChatViewModel implements PropertyChangeListener {
             }
         }
     }
-
 
     public StringProperty getMsg() {
         return msg;
@@ -66,18 +69,19 @@ public class ChatViewModel implements PropertyChangeListener {
         });
     }
 
-    public void addMessage()
-    {
-model.addMessage(createMessageObject());
+    public void addMessage() {
+        model.addMessage(createMessageObject());
     }
+
+
 
     public Message createMessageObject() {
         try {
             Message m = new Message("david", getMsg().get());
             return m;
-        }
-        catch (Exception e)
-        {
+
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
