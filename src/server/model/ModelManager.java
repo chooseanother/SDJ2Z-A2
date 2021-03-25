@@ -15,14 +15,18 @@ public class ModelManager implements Model {
     public static final String HOST = "localhost";
     public static final int PORT = 2910;
     private PropertyChangeSupport property;
+    private UserList userList;
     private LogMultiton multiton;
 
 
 
-    public ModelManager()  {
+    public ModelManager() throws IOException
+    {
         this.property = new PropertyChangeSupport(this);
 
         this.messageList = new MessageList();
+
+        this.userList = new UserList();
 
     }
 
@@ -43,6 +47,22 @@ public class ModelManager implements Model {
     @Override
     public ArrayList<Message> getAllMessages() {
         return messageList.getMessages();
+    }
+
+    @Override public boolean userNameExist(String name)
+    {
+        return userList.nameExist(name);
+    }
+
+    @Override public boolean userExist(String name, String password)
+    {
+        return userList.userExist(name, password);
+    }
+
+    @Override public void addProfile(String name, String password)
+        throws IOException
+    {
+        userList.addProfile(name, password);
     }
 
     @Override

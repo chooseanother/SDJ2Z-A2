@@ -35,6 +35,18 @@ public class ModelManager implements Model,PropertyChangeListener {
         return messageList.getMessages();
     }
 
+    @Override public boolean login(String name, String password)
+        throws Exception
+    {
+        return client.login(name, password);
+    }
+
+    @Override public boolean registerUser(String name, String password)
+        throws Exception
+    {
+        return client.registerUser(name, password);
+    }
+
     @Override
     public void addListener(PropertyChangeListener listener) {
         property.addPropertyChangeListener(listener);

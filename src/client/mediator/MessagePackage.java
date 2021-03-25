@@ -1,6 +1,5 @@
 package client.mediator;
 
-
 import client.model.Message;
 
 public class MessagePackage {

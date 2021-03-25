@@ -9,7 +9,7 @@ import client.viewmodel.ViewModelFactory;
 import java.net.URL;
 
 public enum View {
-    LOGIN("LoginView.fxml"),CHAT("ChatView.fxml"),LOG("LogView.fxml");
+    LOGIN("LoginView.fxml"),CHAT("ChatView.fxml"),LOG("LogView.fxml"),REGISTER("RegisterView.fxml");
 
     private String fxmlFile;
     private client.view.ViewController viewController;
