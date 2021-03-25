@@ -6,6 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import server.viewmodel.RegisterViewModel;
 
+import java.io.IOException;
+
 public class RegisterViewController extends ViewController
 {
   @FXML private TextField usernameField;
@@ -21,20 +23,24 @@ public class RegisterViewController extends ViewController
     errorLabel.textProperty().bind(viewModel.getError());
   }
 
+  @Override public void reset(){
+    getViewModelFactory().getRegisterViewModel().clear();
+  }
+
   public void onBack(ActionEvent actionEvent)
   {
     getViewHandler().openView(View.LOGIN);
   }
 
-  public void onRegister(ActionEvent actionEvent)
+  public void onRegister(ActionEvent actionEvent) throws IOException
   {
-    /*if (viewModel.isOriginal())
+    if (viewModel.isOriginal())
     {
-      viewModel.register;
+      viewModel.register();
       getViewHandler().openView(View.LOGIN);
     }
     else {
       viewModel.getError();
-    }*/
+    }
   }
 }

@@ -3,7 +3,7 @@ package client.model;
 import java.beans.PropertyChangeListener;
 
 public class ModelManager implements Model{
-   /* @Override
+    @Override
     public void addListener(PropertyChangeListener listener) {
 
     }
@@ -11,5 +11,5 @@ public class ModelManager implements Model{
     @Override
     public void removeListener(PropertyChangeListener listener) {
 
-    }*/
+    }
 }

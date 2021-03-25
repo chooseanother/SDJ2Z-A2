@@ -4,6 +4,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import server.model.Model;
 
+import java.io.IOException;
+
 public class RegisterViewModel
 {
   private Model model;
@@ -22,15 +24,23 @@ public class RegisterViewModel
     error.setValue(null);
   }
 
-  /*public boolean isOriginal(){
-    if (!model.userExist(username.get())){
+  public boolean isOriginal(){
+    if (!model.userNameExist(username.get())){
       return true;
     }
     return false;
   }
-  public void register(){
-    model.addProfile(username.get(), password.get());
-  }*/
+  public void register() throws IOException
+  {
+    if (username != null && password != null)
+    {
+      model.addProfile(username.get(), password.get());
+    }
+    else {
+      error.setValue("there is missing name or password");
+      getError();
+    }
+  }
 
   public StringProperty getUsername()
   {
@@ -44,10 +54,12 @@ public class RegisterViewModel
 
   public StringProperty getError()
   {
-    /*if(isOriginal()){
-      return error;
+    if(isOriginal()){
+      error.setValue("");
     }
-    error.setValue("user all ready exist");*/
+    else {
+      error.setValue("username all ready exist");
+    }
     return error;
   }
 }

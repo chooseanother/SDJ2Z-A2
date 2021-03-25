@@ -30,13 +30,13 @@ public class LoginViewController extends ViewController {
 
     @FXML
     private void onLogin(){
-        /*if(viewModel.logIn())
+        if(viewModel.logIn())
         {
             getViewHandler().openView(View.CHAT);
         }
         else{
             viewModel.getError();
-        }*/
+        }
     }
 
     public void onRegister(ActionEvent actionEvent)
