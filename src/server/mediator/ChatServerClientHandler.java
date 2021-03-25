@@ -39,7 +39,7 @@ public class ChatServerClientHandler implements Runnable, PropertyChangeListener
                 switch (request.getType()){
                     case "Message":
                         try {
-                            model.addMessage(new Message(request.getMessage().getUsr(),request.getMessage().getMsg()));
+                            model.addMessage(new Message(request.getMessage().getUsr(),request.getMessage().getMsg()),socket.getRemoteSocketAddress().toString());
                         }
                         catch (Exception e){
                             System.out.println("sending error");
@@ -48,6 +48,7 @@ public class ChatServerClientHandler implements Runnable, PropertyChangeListener
                         break;
                     case "Login":
                         try {
+
                             model.login(request.getMessage().getUsr(),request.getPassword());
                         }
                         catch (Exception e){

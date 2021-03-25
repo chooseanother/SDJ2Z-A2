@@ -59,7 +59,7 @@ public class ChatViewModel implements PropertyChangeListener {
 
     public void addMessage()
     {
-        model.addMessage(createMessageObject());
+        model.addMessage(createMessageObject(),"");
         msg.setValue(null);
     }
 
