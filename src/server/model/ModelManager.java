@@ -17,9 +17,10 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void addMessage(Message messageObject) {
+    public void addMessage(Message messageObject,String ip) {
+
         messageList.add(messageObject);
-        addLog(messageObject.toString());
+        addLog(messageObject.toString() + " " + ip);
         property.firePropertyChange("Message",messageObject.getMsg(),messageObject);
     }
 
