@@ -12,7 +12,6 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ChatClient implements Model {
     private Socket socket;
@@ -20,8 +19,8 @@ public class ChatClient implements Model {
     private PrintWriter out;
     private Gson gson;
     private PropertyChangeSupport property;
-    private ArrayList<MessagePackage> masagePackage;
-    private MessageListPackage messageListPackage;
+    private ArrayList<MessagePackage> messagePackages;
+    private UserListPackage userListPackage;
     private Model model;
 
     private boolean waiting;
@@ -32,7 +31,7 @@ public class ChatClient implements Model {
         out = new PrintWriter(socket.getOutputStream(), true);
         gson = new Gson();
         this.model = model;
-        masagePackage = new ArrayList<>();
+        messagePackages = new ArrayList<>();
         property = new PropertyChangeSupport(this);
         waiting = true;
 
@@ -57,7 +56,7 @@ public class ChatClient implements Model {
 
             MessagePackage msg = gson.fromJson(json, MessagePackage.class);
             if (waiting) {
-                masagePackage.add(msg);
+                messagePackages.add(msg);
                 property.firePropertyChange(msg.getType(), msg.getMessage().getMsg(), msg.getMessage().getUsr());
 
                 notify();
@@ -67,7 +66,7 @@ public class ChatClient implements Model {
             }
         } else {
             if (waiting) {
-                messageListPackage = (gson.fromJson(json, MessageListPackage.class));
+                userListPackage = (gson.fromJson(json, UserListPackage.class));
                 notify();
             }
         }
@@ -77,7 +76,7 @@ public class ChatClient implements Model {
 
     private synchronized MessagePackage waitingForReply() {
         waiting = true;
-        while (masagePackage.isEmpty()) {
+        while (messagePackages.isEmpty()) {
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -85,7 +84,7 @@ public class ChatClient implements Model {
             }
         }
         waiting = false;
-        return masagePackage.remove(0);
+        return messagePackages.remove(0);
     }
 
 
