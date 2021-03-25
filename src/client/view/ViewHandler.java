@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import client.viewmodel.ViewModelFactory;
+import client.view.ViewController;
 
 public class ViewHandler {
     private Scene currentScene;
@@ -17,14 +18,14 @@ public class ViewHandler {
 
     public void start(Stage primaryStage){
         this.primaryStage = primaryStage;
-        openView(View.LOGIN);
+        openView(View.CHAT);
     }
 
     public void openView(View view){
         ViewController viewController = view.getViewController(this,viewModelFactory);
         Region root = viewController.getRoot();
         currentScene.setRoot(root);
-        String title = "";
+        String title = "Client";
 
         if (root.getUserData() != null)
         {

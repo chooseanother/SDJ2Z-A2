@@ -1,23 +1,21 @@
 package client.mediator;
 
+import client.model.Message;
+
 public class MessagePackage {
-    private String usr;
-    private String msg;
+    private String type;
+    private Message message;
 
-    public MessagePackage(String usr, String msg){
-        this.usr = usr;
-        this.msg = msg;
+    public MessagePackage(Message message,String type){
+        this.type = type;
+        this.message = new Message(message.getUsr(),message.getMsg());
     }
 
-    public String getUsr() {
-        return usr;
+    public String getType() {
+        return type;
     }
 
-    public String getMsg() {
-        return msg;
-    }
-
-    @Override public String toString(){
-        return usr + ": "+msg;
+    public Message getMessage() {
+        return message;
     }
 }

@@ -9,7 +9,6 @@ import server.viewmodel.LogViewModel;
 public class LogViewController extends ViewController {
     @FXML
     private ListView<String> logTextArea;
-    private LogViewModel viewModel;
 
     public LogViewController() {
     }
@@ -17,9 +16,7 @@ public class LogViewController extends ViewController {
     @Override
     protected void init()
     {
-        init(getViewHandler() , getViewModelFactory() ,getRoot());
-        logTextArea.setItems(viewModel.getLogTextArea());
-
+        logTextArea.setItems(getViewModelFactory().getLogViewModel().getLogTextArea());
     }
 
     @Override

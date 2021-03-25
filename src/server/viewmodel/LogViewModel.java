@@ -6,6 +6,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import server.model.LogMultiton;
+import server.model.Message;
 import server.model.Model;
 
 import java.beans.PropertyChangeEvent;
@@ -32,10 +33,8 @@ public class LogViewModel implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         Platform.runLater(() -> {
-            if (evt.getPropertyName().equals("log")) {
-                LogMultiton multiton = (LogMultiton) evt.getOldValue();
-
-                logText.add(multiton.toString());
+            if (evt.getPropertyName().equals("Message")) {
+                model.addLog(evt.getNewValue().toString());
             }
         });
     }

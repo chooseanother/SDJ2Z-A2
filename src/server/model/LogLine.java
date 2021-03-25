@@ -22,12 +22,6 @@ public class LogLine {
 
     @Override
     public String toString() {
-        try {
-            return text + " " + dateTime + " " + InetAddress.getLocalHost();
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return text + " " + dateTime;
     }
-
 }
