@@ -11,6 +11,6 @@ public interface Model extends UnnamedPropertyChangeSubject {
 
 
     void addMessage(Message messageObject);
-    void addLog(String log);
+
     ArrayList<Message> getAllMessages();
 }
