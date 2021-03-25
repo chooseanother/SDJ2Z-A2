@@ -15,7 +15,7 @@ import java.net.Socket;
 public class ChatServerClientHandler implements Runnable, PropertyChangeListener {
     private Model model;
     private Socket socket;
-    private BufferedReader in; //tcp or udp? hmmm
+    private BufferedReader in;
     private PrintWriter out;
     private boolean running;
     private Gson gson;
@@ -42,8 +42,26 @@ public class ChatServerClientHandler implements Runnable, PropertyChangeListener
                             model.addMessage(new Message(request.getMessage().getUsr(),request.getMessage().getMsg()));
                         }
                         catch (Exception e){
-                            System.out.println("sending eror");
-                            out.println(gson.toJson(new MessagePackage(request.getMessage(),"Error")));
+                            System.out.println("sending error");
+                            out.println(gson.toJson(new MessagePackage(new Message(null,e.getMessage()),"Error")));
+                        }
+                        break;
+                    case "Login":
+                        try {
+                            model.login(request.getMessage().getUsr(),request.getPassword());
+                        }
+                        catch (Exception e){
+                            System.out.println("sending error");
+                            out.println(gson.toJson(new MessagePackage(new Message(null,e.getMessage()),"Error")));
+                        }
+                        break;
+                    case "Register":
+                        try {
+                            model.registerUser(request.getMessage().getUsr(),request.getPassword());
+                        }
+                        catch (Exception e){
+                            System.out.println("sending error");
+                            out.println(gson.toJson(new MessagePackage(new Message(null,e.getMessage()),"Error")));
                         }
                         break;
                 }
@@ -57,8 +75,16 @@ public class ChatServerClientHandler implements Runnable, PropertyChangeListener
     public void propertyChange(PropertyChangeEvent event) {
         switch (event.getPropertyName()){
             case "Message":
-                System.out.println("Server sending > \"Message\"");
+                System.out.println("Server sending > "+event.getNewValue());
                 out.println(gson.toJson(new MessagePackage((Message) event.getNewValue(),"Message")));
+                break;
+            case "Login":
+                System.out.println("Server sending > " + event.getNewValue());
+                out.println(gson.toJson(new MessagePackage(new Message(null, "Success"),event.getPropertyName())));
+                break;
+            case "Register":
+                System.out.println("Server sending > \"Message\"");
+                out.println(gson.toJson(new MessagePackage(new Message(null, "Success"),event.getPropertyName())));
                 break;
         }
     }

@@ -35,7 +35,6 @@ public class ChatClient implements Model
     this.model = model;
     masagePackage = new ArrayList<>();
     property = new PropertyChangeSupport(this);
-    waiting = true;
 
     ChatClientReceiver ccr = new ChatClientReceiver(this, in);
     Thread t = new Thread(ccr);
@@ -54,13 +53,10 @@ public class ChatClient implements Model
   public synchronized void receive(String json) throws Exception
   {
     System.out.println("Received " + json);
-
     MessagePackage msg = gson.fromJson(json, MessagePackage.class);
-
     if (waiting)
     {
       masagePackage.add(msg);
-
       notify();
     }
     else
@@ -68,7 +64,6 @@ public class ChatClient implements Model
       property.firePropertyChange(msg.getType(), msg.getMessage().getMsg(),
           msg.getMessage().getUsr());
     }
-
   }
 
   private synchronized MessagePackage waitingForReply()
