@@ -7,7 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class ChatServer implements Runnable{
-    private final static int PORT = 5678;
+    private final static int PORT = 2910;
     private boolean running;
     private ServerSocket welcomeSocket;
     private Model model;
@@ -38,7 +38,7 @@ public class ChatServer implements Runnable{
             }
         }
         catch (Exception e){
-            //e.printStackTrace();
+            e.printStackTrace();
         }
     }
 }

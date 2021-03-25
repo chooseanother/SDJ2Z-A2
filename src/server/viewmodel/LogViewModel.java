@@ -1,13 +1,41 @@
 package server.viewmodel;
 
+import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import server.model.LogMultiton;
+import server.model.Message;
 import server.model.Model;
 
-public class LogViewModel {
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
+public class LogViewModel implements PropertyChangeListener {
     private Model model;
+    private ObservableList<String> logText;
 
-    public LogViewModel(Model model){this.model=model;}
+    public LogViewModel(Model model) {
+        this.model = model;
+        this.model.addListener(this);
+        logText = FXCollections.observableArrayList();
+    }
 
-    public void clear(){
+    public ObservableList<String> getLogTextArea() {
+        return logText;
+    }
 
+    public void clear() {
+        //
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        Platform.runLater(() -> {
+            if (evt.getPropertyName().equals("Log")) {
+                logText.add((String)evt.getNewValue());
+            }
+        });
     }
 }
