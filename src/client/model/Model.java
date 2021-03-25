@@ -12,9 +12,9 @@ public interface Model extends UnnamedPropertyChangeSubject {
 
     ArrayList<Message> getAllMessages();
 
-    boolean userNameExist(String name);
+    boolean userNameExist(String name) throws IOException;
 
-    boolean userExist(String name, String password);
+    boolean userExist(String name, String password) throws IOException;
 
     void addProfile(String name, String password) throws IOException;
 }

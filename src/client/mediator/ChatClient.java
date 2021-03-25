@@ -21,7 +21,7 @@ public class ChatClient implements Model {
     private Gson gson;
     private PropertyChangeSupport property;
     private ArrayList<MessagePackage> masagePackage;
-    private MessageListPackage messageListPackage;
+    private MessagePackage messageListPackage;
     private Model model;
 
     private boolean waiting;
@@ -67,7 +67,7 @@ public class ChatClient implements Model {
             }
         } else {
             if (waiting) {
-                messageListPackage = (gson.fromJson(json, MessageListPackage.class));
+                messageListPackage = (gson.fromJson(json, MessagePackage.class));
                 notify();
             }
         }
@@ -115,19 +115,27 @@ public class ChatClient implements Model {
         return null;
     }
 
-    @Override public boolean userNameExist(String name)
+    @Override public boolean userNameExist(String name) throws IOException
     {
-        return false;
+        System.out.println("Client requests if name all ready exist");
+        out.println(gson.toJson(new MessagePackage(new Message(name,null), "Name")));
+        boolean result = gson.fromJson(in.readLine(), MessagePackage.class).isError();
+        return result;
     }
 
     @Override public boolean userExist(String name, String password)
+        throws IOException
     {
-        return false;
+        System.out.println("Client requests if User exist");
+        out.println(gson.toJson(new MessagePackage(new Message(name,null), "Exist", password)));
+        boolean result = gson.fromJson(in.readLine(), MessagePackage.class).isError();
+        return result;
     }
 
     @Override public void addProfile(String name, String password)
         throws IOException
     {
-
+        System.out.println("Client is registering");
+        out.println(gson.toJson(new MessagePackage(new Message(name, null), "Register", password)));
     }
 }

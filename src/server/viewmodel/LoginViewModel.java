@@ -17,6 +17,7 @@ public class LoginViewModel {
         username = new SimpleStringProperty();
         password = new SimpleStringProperty();
         error = new SimpleStringProperty();
+        user = new UserInformation();
     }
 
     public void clear(){
