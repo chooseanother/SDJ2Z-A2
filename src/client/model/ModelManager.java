@@ -35,21 +35,16 @@ public class ModelManager implements Model,PropertyChangeListener {
         return messageList.getMessages();
     }
 
-    @Override public boolean userNameExist(String name) throws IOException
+    @Override public boolean login(String name, String password)
+        throws Exception
     {
-        return client.userNameExist(name);
+        return client.login(name, password);
     }
 
-    @Override public boolean userExist(String name, String password)
-        throws IOException
+    @Override public boolean registerUser(String name, String password)
+        throws Exception
     {
-        return client.userExist(name, password);
-    }
-
-    @Override public void addProfile(String name, String password)
-        throws IOException
-    {
-        client.addProfile(name, password);
+        return client.registerUser(name, password);
     }
 
     @Override

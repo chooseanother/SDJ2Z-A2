@@ -12,9 +12,8 @@ public interface Model extends UnnamedPropertyChangeSubject {
 
     ArrayList<Message> getAllMessages();
 
-    boolean userNameExist(String name) throws IOException;
 
-    boolean userExist(String name, String password) throws IOException;
+    boolean login(String name, String password) throws Exception;
 
-    void addProfile(String name, String password) throws IOException;
+    boolean registerUser(String name, String password) throws Exception;
 }

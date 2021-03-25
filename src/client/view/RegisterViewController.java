@@ -6,19 +6,22 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
+
 public class RegisterViewController extends ViewController
 {
   @FXML private TextField usernameField;
   @FXML private TextField passwordField;
   @FXML private Label errorLabel;
-  private RegisterViewModel viewModel;
 
-  @Override protected void init()
+  @Override protected void init() throws Exception
   {
-    viewModel = super.getViewModelFactory().getRegisterViewModel();
-    usernameField.textProperty().bindBidirectional(viewModel.getUsername());
-    passwordField.textProperty().bindBidirectional(viewModel.getPassword());
-    errorLabel.textProperty().bind(viewModel.getError());
+    usernameField.textProperty().bindBidirectional(
+        getViewModelFactory().getRegisterViewModel().getUsername());
+    passwordField.textProperty().bindBidirectional(
+        getViewModelFactory().getRegisterViewModel().getPassword());
+    errorLabel.textProperty()
+        .bind(getViewModelFactory().getRegisterViewModel().getError());
   }
 
   public void onBack(ActionEvent actionEvent)
@@ -26,15 +29,11 @@ public class RegisterViewController extends ViewController
     getViewHandler().openView(View.LOGIN);
   }
 
-  public void onRegister(ActionEvent actionEvent)
+  public void onRegister(ActionEvent actionEvent) throws Exception
   {
-    /*if (viewModel.isOriginal())
+    if (getViewModelFactory().getRegisterViewModel().register())
     {
-      viewModel.register;
       getViewHandler().openView(View.LOGIN);
     }
-    else {
-      viewModel.getError();
-    }*/
   }
 }

@@ -24,13 +24,14 @@ public class LoginViewModel {
         error.setValue(null);
     }
 
-    /*public boolean logIn(){
-        if(model.userExist(username.get(), password.get())){
+    public boolean logIn() throws Exception
+    {
+        if(model.login(username.get(),password.get())){
             user.setUser(username.get());
             return true;
         }
         return false;
-    }*/
+    }
 
     public StringProperty getUsername()
     {
@@ -42,20 +43,19 @@ public class LoginViewModel {
         return password;
     }
 
-    public StringProperty getError()
+    public StringProperty getError() throws Exception
     {
-        /*if (!logIn()){
+        if (!logIn()){
             return error;
         }
-        else if (!model.userNameExist(username.get())){
+        else if (!model.login(username.get(),password.get())){
             error.setValue("wrong password");
             return error;
         }
         else {
             error.setValue("user doesn't exist");
             return error;
-        }*/
-        return error;
+        }
     }
     public void logOUt(){
         user.setUser(username.get());

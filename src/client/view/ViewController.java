@@ -8,7 +8,7 @@ public abstract class ViewController {
     private ViewHandler viewHandler;
     private ViewModelFactory viewModelFactory;
 
-    protected abstract void init();
+    protected abstract void init() throws Exception;
 
     public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory, Region root){
         this.root = root;

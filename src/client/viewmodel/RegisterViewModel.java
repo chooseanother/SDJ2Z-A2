@@ -24,15 +24,17 @@ public class RegisterViewModel
     error.setValue(null);
   }
 
-  public boolean isOriginal(){
-    /*if (!model.userNameExist(username.get())){
-      return true;
-    }*/
-    return false;
-  }
-  public void register() throws IOException
+
+  public boolean register() throws Exception
   {
-    //model.addProfile(username.get(), password.get());
+    boolean result = false;
+    try{
+      result = model.registerUser(username.get(), password.get());
+    }
+    catch (Exception e){
+      error.setValue(e.getMessage());
+    }
+    return result;
   }
 
   public StringProperty getUsername()
@@ -45,12 +47,9 @@ public class RegisterViewModel
     return password;
   }
 
-  public StringProperty getError()
+  public StringProperty getError() throws Exception
   {
-    if(isOriginal()){
+      error.setValue("user all ready exist");
       return error;
-    }
-    error.setValue("user all ready exist");
-    return error;
   }
 }
