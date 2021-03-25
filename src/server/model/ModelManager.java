@@ -34,8 +34,9 @@ public class ModelManager implements Model {
 
     @Override
     public void addLog(String log) {
+        multiton = LogMultiton.getInstance(new DateTime().getSortableDate());
         multiton.addLog(log);
-        property.firePropertyChange("log" ,null, log);
+//        property.firePropertyChange("log" ,null, log);
     }
 
     @Override
