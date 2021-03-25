@@ -1,7 +1,7 @@
 package client.mediator;
 
 
-import server.model.Message;
+import client.model.Message;
 
 public class MessagePackage {
     private String type;
