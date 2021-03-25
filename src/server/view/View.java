@@ -29,6 +29,7 @@ public enum View {
                 Region root = loader.load();
                 viewController = loader.getController();
                 viewController.init(viewHandler, viewModelFactory, root);
+                viewController.init();
             }
             catch (Exception e){
                 e.printStackTrace();
