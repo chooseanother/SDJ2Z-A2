@@ -35,6 +35,22 @@ public class ModelManager implements Model,PropertyChangeListener {
         return messageList.getMessages();
     }
 
+    @Override public boolean userNameExist(String name)
+    {
+        return client.userNameExist(name);
+    }
+
+    @Override public boolean userExist(String name, String password)
+    {
+        return client.userExist(name, password);
+    }
+
+    @Override public void addProfile(String name, String password)
+        throws IOException
+    {
+        client.addProfile(name, password);
+    }
+
     @Override
     public void addListener(PropertyChangeListener listener) {
         property.addPropertyChangeListener(listener);

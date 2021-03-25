@@ -10,6 +10,7 @@ import javax.swing.*;
 public class LoginViewModel {
     private Model model;
     private StringProperty username, password, error;
+    private UserInformation user;
 
     public LoginViewModel(Model model){
         this.model = model;
@@ -26,6 +27,7 @@ public class LoginViewModel {
 
     public boolean logIn(){
         if(model.userExist(username.get(), password.get())){
+            user.setUser(username.get());
             return true;
         }
         return false;
@@ -51,5 +53,8 @@ public class LoginViewModel {
             error.setValue("user doesn't exist");
         }
         return error;
+    }
+    public void logOUt(){
+        user.setUser(username.get());
     }
 }

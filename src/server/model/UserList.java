@@ -20,7 +20,7 @@ public class UserList
       file.createNewFile();
 
     } catch (IOException e) {
-      System.out.println("An error occurred.");
+      System.out.println("An error occurred with Profiles file.");
       e.printStackTrace();
     }
     reader = new FileReader(file);

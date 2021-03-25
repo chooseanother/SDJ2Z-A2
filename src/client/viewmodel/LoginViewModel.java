@@ -8,12 +8,14 @@ import javafx.beans.property.StringProperty;
 public class LoginViewModel {
     private Model model;
     private StringProperty username, password, error;
+    private UserInformation user;
 
     public LoginViewModel(Model model){
         this.model = model;
         username = new SimpleStringProperty();
         password = new SimpleStringProperty();
         error = new SimpleStringProperty();
+        user = new UserInformation();
     }
 
     public void clear(){
@@ -24,6 +26,7 @@ public class LoginViewModel {
 
     /*public boolean logIn(){
         if(model.userExist(username.get(), password.get())){
+            user.setUser(username.get());
             return true;
         }
         return false;
@@ -53,5 +56,8 @@ public class LoginViewModel {
             return error;
         }*/
         return error;
+    }
+    public void logOUt(){
+        user.setUser(username.get());
     }
 }

@@ -4,6 +4,7 @@ import client.model.Model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.io.IOException;
 
 public class RegisterViewModel
 {
@@ -23,15 +24,16 @@ public class RegisterViewModel
     error.setValue(null);
   }
 
-  /*public boolean isOriginal(){
-    if (!model.userExist(username.get())){
+  public boolean isOriginal(){
+    /*if (!model.userNameExist(username.get())){
       return true;
-    }
+    }*/
     return false;
   }
-  public void register(){
-    model.addProfile(username.get(), password.get());
-  }*/
+  public void register() throws IOException
+  {
+    //model.addProfile(username.get(), password.get());
+  }
 
   public StringProperty getUsername()
   {
@@ -45,10 +47,10 @@ public class RegisterViewModel
 
   public StringProperty getError()
   {
-    /*if(isOriginal()){
+    if(isOriginal()){
       return error;
     }
-    error.setValue("user all ready exist");*/
+    error.setValue("user all ready exist");
     return error;
   }
 }

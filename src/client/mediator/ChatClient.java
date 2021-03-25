@@ -114,4 +114,20 @@ public class ChatClient implements Model {
     public ArrayList<Message> getAllMessages() {
         return null;
     }
+
+    @Override public boolean userNameExist(String name)
+    {
+        return false;
+    }
+
+    @Override public boolean userExist(String name, String password)
+    {
+        return false;
+    }
+
+    @Override public void addProfile(String name, String password)
+        throws IOException
+    {
+
+    }
 }
