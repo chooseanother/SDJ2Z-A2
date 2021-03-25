@@ -29,6 +29,7 @@ public class ModelManager implements Model {
     @Override
     public void addMessage(Message messageObject) {
         messageList.add(messageObject);
+        addLog(messageObject.toString());
         property.firePropertyChange("Message",messageObject.getMsg(),messageObject);
     }
 
@@ -36,7 +37,7 @@ public class ModelManager implements Model {
     public void addLog(String log) {
         multiton = LogMultiton.getInstance(new DateTime().getSortableDate());
         multiton.addLog(log);
-//        property.firePropertyChange("log" ,null, log);
+        property.firePropertyChange("Log" ,null, log);
     }
 
     @Override
