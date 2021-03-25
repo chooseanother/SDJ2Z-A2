@@ -4,18 +4,17 @@ import client.model.Model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-
 public class LoginViewModel {
     private Model model;
     private StringProperty username, password, error;
     private UserInformation user;
 
-    public LoginViewModel(Model model){
+    public LoginViewModel(Model model, UserInformation userInformation){
         this.model = model;
         username = new SimpleStringProperty();
         password = new SimpleStringProperty();
         error = new SimpleStringProperty();
-        user = new UserInformation();
+        user = userInformation;
     }
 
     public void clear(){
@@ -26,11 +25,15 @@ public class LoginViewModel {
 
     public boolean logIn() throws Exception
     {
-        if(model.login(username.get(),password.get())){
+        boolean result = false;
+        try{
+            result = model.login(username.get(), password.get());
             user.setUser(username.get());
-            return true;
         }
-        return false;
+        catch (Exception e){
+            error.setValue(e.getMessage());
+        }
+        return result;
     }
 
     public StringProperty getUsername()
@@ -43,21 +46,5 @@ public class LoginViewModel {
         return password;
     }
 
-    public StringProperty getError() throws Exception
-    {
-        if (!logIn()){
-            return error;
-        }
-        else if (!model.login(username.get(),password.get())){
-            error.setValue("wrong password");
-            return error;
-        }
-        else {
-            error.setValue("user doesn't exist");
-            return error;
-        }
-    }
-    public void logOUt(){
-        user.setUser(username.get());
-    }
+    public StringProperty getError(){return error;}
 }

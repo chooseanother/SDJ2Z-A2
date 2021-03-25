@@ -3,18 +3,15 @@ package server.view;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Region;
 import server.viewmodel.LoginViewModel;
-import server.viewmodel.ViewModelFactory;
 
 public class LoginViewController extends ViewController {
     @FXML private TextField usernameField;
-    @FXML private TextField passwordField;
+    @FXML private PasswordField passwordField;
     @FXML private Label errorLabel;
-
     private LoginViewModel viewModel;
-
 
     @Override protected void init()
     {
@@ -33,9 +30,6 @@ public class LoginViewController extends ViewController {
         if(viewModel.logIn())
         {
             getViewHandler().openView(View.CHAT);
-        }
-        else{
-            viewModel.getError();
         }
     }
 

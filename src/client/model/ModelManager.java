@@ -6,33 +6,32 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 public class ModelManager implements Model,PropertyChangeListener {
-    MessageList messageList;
     public static final String HOST = "localhost";
     public static final int PORT = 2910;
     private PropertyChangeSupport property;
     private ChatClient client;
+    private LogMultiton multiton;
 
 
     public ModelManager() throws IOException {
         this.property = new PropertyChangeSupport(this);
         this.client = new ChatClient(this, HOST, PORT);
         client.addListener(this);
-
-        this.messageList = new MessageList();
-
     }
 
     @Override
     public void addMessage(Message messageObject) throws Exception {
         client.addMessage(messageObject);
+        addLog(messageObject.toString());
     }
 
-    @Override
-    public ArrayList<Message> getAllMessages() {
-        return messageList.getMessages();
+    public void addLog(String log) {
+        multiton = LogMultiton.getInstance(new DateTime().getSortableDate());
+        multiton.addLog(log);
+        property.firePropertyChange("Log" ,null, log);
     }
 
     @Override public boolean login(String name, String password)
@@ -62,6 +61,5 @@ public class ModelManager implements Model,PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         property.firePropertyChange(evt.getPropertyName(), evt.getOldValue(), evt.getNewValue());
-
     }
 }

@@ -10,9 +10,11 @@ public class RegisterViewModel
 {
   private Model model;
   private StringProperty username, password, error;
+  private UserInformation userInformation;
 
-  public RegisterViewModel(Model model){
+  public RegisterViewModel(Model model, UserInformation userInformation){
     this.model = model;
+    this.userInformation = userInformation;
     username = new SimpleStringProperty();
     password = new SimpleStringProperty();
     error = new SimpleStringProperty();
@@ -24,22 +26,23 @@ public class RegisterViewModel
     error.setValue(null);
   }
 
-  public boolean isOriginal(){
-    if (!model.userNameExist(username.get())){
-      return true;
-    }
-    return false;
-  }
-  public void register() throws IOException
+  public boolean register() throws IOException
   {
+    boolean result = false;
     if (username != null && password != null)
     {
-      model.addProfile(username.get(), password.get());
+      try {
+        result = model.registerUser(username.get(), password.get());
+        userInformation.setUser(username.get());
+      } catch (Exception e){
+        error.setValue(e.getMessage());
+      }
+
     }
     else {
       error.setValue("there is missing name or password");
-      getError();
     }
+    return result;
   }
 
   public StringProperty getUsername()
@@ -52,14 +55,7 @@ public class RegisterViewModel
     return password;
   }
 
-  public StringProperty getError()
-  {
-    if(isOriginal()){
-      error.setValue("");
-    }
-    else {
-      error.setValue("username all ready exist");
-    }
+  public StringProperty getError(){
     return error;
   }
 }

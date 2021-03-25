@@ -1,36 +1,19 @@
 package server.model;
 
-import client.mediator.ChatClient;
-import server.mediator.ChatServer;
-import server.model.MessageList;
-import server.model.Model;
-
-
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.LineNumberReader;
-import java.util.ArrayList;
 
 public class ModelManager implements Model {
-    server.model.MessageList messageList;
-    public static final String HOST = "localhost";
-    public static final int PORT = 2910;
+    MessageList messageList;
     private PropertyChangeSupport property;
     private UserList userList;
     private LogMultiton multiton;
 
-
-
-    public ModelManager() throws IOException
-    {
+    public ModelManager() throws IOException {
         this.property = new PropertyChangeSupport(this);
-
         this.messageList = new MessageList();
-
         this.userList = new UserList();
-
     }
 
     @Override
@@ -47,24 +30,17 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public ArrayList<Message> getAllMessages() {
-        return messageList.getMessages();
+    public boolean login(String usr, String pwd) throws Exception {
+        boolean result = userList.login(usr, pwd);
+        property.firePropertyChange("Login",usr,"Success");
+        return result;
     }
 
-    @Override public boolean userNameExist(String name)
-    {
-        return userList.nameExist(name);
-    }
-
-    @Override public boolean userExist(String name, String password)
-    {
-        return userList.userExist(name, password);
-    }
-
-    @Override public void addProfile(String name, String password)
-        throws IOException
-    {
-        userList.addProfile(name, password);
+    @Override
+    public boolean registerUser(String usr, String pwd) throws Exception {
+        boolean result = userList.addProfile(usr, pwd);
+        property.firePropertyChange("Register",usr,"Success");
+        return result;
     }
 
     @Override
@@ -76,6 +52,5 @@ public class ModelManager implements Model {
     @Override
     public void removeListener(PropertyChangeListener listener) {
         property.removePropertyChangeListener(listener);
-
     }
 }

@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="445.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.RegisterViewController">
+<AnchorPane prefHeight="400.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.RegisterViewController">
    <children>
-      <HBox alignment="CENTER" layoutY="274.0" prefHeight="70.0" prefWidth="445.0" spacing="150.0">
+      <HBox alignment="CENTER" layoutY="255.0" prefHeight="70.0" prefWidth="450.0" spacing="150.0">
          <children>
             <Button mnemonicParsing="false" onAction="#onBack" text="Back">
                <font>
@@ -20,31 +20,31 @@
             </Button>
          </children>
       </HBox>
-      <HBox layoutY="87.0" prefHeight="157.0" prefWidth="445.0">
+      <HBox layoutY="70.0" prefHeight="155.0" prefWidth="450.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="204.0" prefWidth="224.0" spacing="20.0">
+            <VBox alignment="CENTER" prefHeight="155.0" prefWidth="233.0" spacing="20.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" wrappingWidth="97.89453125">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" wrappingWidth="94.89453125">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="91.13671875">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="89.13671875">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Text>
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="204.0" prefWidth="173.0" spacing="20.0">
+            <VBox alignment="CENTER" prefHeight="155.0" prefWidth="190.0" spacing="20.0">
                <children>
-                  <TextField fx:id="usernameField" />
-                  <TextField fx:id="passwordField" />
+                  <TextField fx:id="usernameField" onAction="#onRegister" />
+                  <PasswordField fx:id="passwordField" onAction="#onRegister" />
                </children>
             </VBox>
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="445.0">
+      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="450.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Registe">
                <font>
@@ -53,7 +53,7 @@
             </Text>
          </children>
       </HBox>
-      <Label fx:id="errorLabel" layoutX="177.0" layoutY="244.0" text="error label" textFill="RED">
+      <Label fx:id="errorLabel" layoutX="180.0" layoutY="225.0" text="error label" textFill="RED">
          <font>
             <Font size="20.0" />
          </font>

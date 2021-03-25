@@ -46,13 +46,26 @@ public class UserList
     writer.close();
   }
 
-  public void addProfile(String name, String password) throws IOException
+  public boolean login(String usr, String pwd) throws Exception {
+    if (userExist(usr,pwd)){
+      return true;
+    }
+    else {
+      throw new Exception("Wrong username or password");
+    }
+  }
+
+  public boolean addProfile(String name, String password) throws Exception
   {
+    if (nameExist(name)){
+      throw new Exception("Username already exists");
+    }
     System.out.println(name);
     writer = new FileWriter(file, true);
     userLists.add(new User(name, password));
     writer.write(name + ";:;" + password + ";:;");
     writer.close();
+    return true;
   }
   public boolean nameExist(String name){
     for(User x:userLists){

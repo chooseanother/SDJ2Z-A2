@@ -109,9 +109,9 @@ public class ChatClient implements Model
 
   }
 
-  @Override public ArrayList<Message> getAllMessages()
-  {
-    return null;
+  @Override
+  public void addLog(String log) {
+
   }
 
   @Override public boolean login(String name, String password) throws Exception
@@ -127,7 +127,7 @@ public class ChatClient implements Model
     property.firePropertyChange(messagePackage.getType(),
         messagePackage.getMessage().getMsg(),
         messagePackage.getMessage().getUsr());
-    return messagePackage.getType().equals("Success");
+    return messagePackage.getMessage().getMsg().equals("Success");
   }
 
   @Override public boolean registerUser(String name, String password)
@@ -144,6 +144,6 @@ public class ChatClient implements Model
     property.firePropertyChange(messagePackage.getType(),
         messagePackage.getMessage().getMsg(),
         messagePackage.getMessage().getUsr());
-    return messagePackage.getType().equals("Success");
+    return messagePackage.getMessage().getMsg().equals("Success");
   }
 }

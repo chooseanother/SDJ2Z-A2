@@ -68,6 +68,7 @@ public class ChatServerClientHandler implements Runnable, PropertyChangeListener
             }
             catch (Exception e){
                 e.printStackTrace();
+                //close()
             }
         }
     }
@@ -80,7 +81,7 @@ public class ChatServerClientHandler implements Runnable, PropertyChangeListener
                 break;
             case "Login":
                 System.out.println("Server sending > " + event.getNewValue());
-                out.println(gson.toJson(new MessagePackage(new Message(null, "Success"),event.getPropertyName())));
+                out.println(gson.toJson(new MessagePackage(new Message(null, (String)event.getNewValue()),event.getPropertyName())));
                 break;
             case "Register":
                 System.out.println("Server sending > \"Message\"");

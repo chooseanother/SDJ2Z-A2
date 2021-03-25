@@ -15,29 +15,21 @@ public class ChatViewModel implements PropertyChangeListener {
     private Model model;
     private ObservableList<SimpleMessagesViewModel> list;
     private StringProperty usr, msg;
+    private UserInformation userInformation;
 
 
-    public ChatViewModel(Model model) {
+    public ChatViewModel(Model model, UserInformation userInformation) {
         this.model = model;
         model.addListener(this);
         this.usr = new SimpleStringProperty();
         this.msg = new SimpleStringProperty();
         list = FXCollections.observableArrayList();
-        loadFromModel();
+        this.userInformation = userInformation;
     }
 
     public void clear() {
-        // errorProperty.setValue("");
+        msg.setValue(null);
     }
-
-    private void loadFromModel() {
-        if (model.getAllMessages().size() > 0) {
-            for (Message e : model.getAllMessages()) {
-                list.add(new SimpleMessagesViewModel(e));
-            }
-        }
-    }
-
 
     public StringProperty getMsg() {
         return msg;
@@ -70,20 +62,26 @@ public class ChatViewModel implements PropertyChangeListener {
             }
         });
     }
-    public void accept()
-    {
-        try {
+    public void addMessage() throws Exception {
+        try{
             model.addMessage(createMessageObject());
+            msg.setValue(null);
+        }
+        catch (Exception e){
+            //
+        }
+    }
+
+    public Message createMessageObject() {
+        try {
+            Message m = new Message(userInformation.getUser(), getMsg().get());
+            return m;
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
-    }
-
-    public Message createMessageObject()  {
-        Message m = new Message("david", getMsg().get());
-        return m;
+        return null;
 
     }
 }

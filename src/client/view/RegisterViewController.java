@@ -1,27 +1,29 @@
 package client.view;
 
-import client.viewmodel.RegisterViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
-import java.io.IOException;
+import client.viewmodel.RegisterViewModel;
 
 public class RegisterViewController extends ViewController
 {
   @FXML private TextField usernameField;
-  @FXML private TextField passwordField;
+  @FXML private PasswordField passwordField;
   @FXML private Label errorLabel;
+  private RegisterViewModel viewModel;
 
   @Override protected void init() throws Exception
   {
-    usernameField.textProperty().bindBidirectional(
-        getViewModelFactory().getRegisterViewModel().getUsername());
-    passwordField.textProperty().bindBidirectional(
-        getViewModelFactory().getRegisterViewModel().getPassword());
-    errorLabel.textProperty()
-        .bind(getViewModelFactory().getRegisterViewModel().getError());
+    viewModel = getViewModelFactory().getRegisterViewModel();
+    usernameField.textProperty().bindBidirectional(viewModel.getUsername());
+    passwordField.textProperty().bindBidirectional(viewModel.getPassword());
+    errorLabel.textProperty().bind(viewModel.getError());
+  }
+
+  @Override public void reset(){
+    getViewModelFactory().getRegisterViewModel().clear();
   }
 
   public void onBack(ActionEvent actionEvent)
@@ -31,7 +33,7 @@ public class RegisterViewController extends ViewController
 
   public void onRegister(ActionEvent actionEvent) throws Exception
   {
-    if (getViewModelFactory().getRegisterViewModel().register())
+    if (viewModel.register())
     {
       getViewHandler().openView(View.LOGIN);
     }

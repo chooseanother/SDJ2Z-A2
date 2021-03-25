@@ -8,10 +8,11 @@ public class ViewModelFactory {
     private LogViewModel logViewModel;
     private RegisterViewModel registerViewModel;
     public ViewModelFactory(Model model){
-        this.chatViewModel = new ChatViewModel(model);
-        this.loginViewModel = new LoginViewModel(model);
+        UserInformation userInformation = new UserInformation();
+        this.chatViewModel = new ChatViewModel(model,userInformation);
+        this.loginViewModel = new LoginViewModel(model,userInformation);
         this.logViewModel = new LogViewModel(model);
-        this.registerViewModel = new RegisterViewModel(model);
+        this.registerViewModel = new RegisterViewModel(model,userInformation);
     }
 
     public ChatViewModel getChatViewModel() {
