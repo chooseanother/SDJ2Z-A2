@@ -33,8 +33,8 @@ public class LogViewModel implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         Platform.runLater(() -> {
-            if (evt.getPropertyName().equals("Message")) {
-                model.addLog(evt.getNewValue().toString());
+            if (evt.getPropertyName().equals("Log")) {
+                logText.add((String)evt.getNewValue());
             }
         });
     }
