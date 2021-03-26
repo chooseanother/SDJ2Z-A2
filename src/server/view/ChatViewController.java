@@ -8,17 +8,16 @@ import server.viewmodel.SimpleMessagesViewModel;
 
 
 public class ChatViewController extends ViewController {
-    @FXML private TableColumn<SimpleMessagesViewModel, String> Name;
-    @FXML private TableColumn<SimpleMessagesViewModel, String> Message;
+    @FXML private TableColumn<SimpleMessagesViewModel, String> name;
+    @FXML private TableColumn<SimpleMessagesViewModel, String> message;
     @FXML private TableView<SimpleMessagesViewModel> chatTextArea;
-    @FXML private TextField TextToBeSent;
-    @FXML private Button Send, Log, Logout;
+    @FXML private TextField textToBeSent;
 
     @Override protected void init() {
-        Name.setCellValueFactory(cellData -> cellData.getValue().getUsr());
-        Message.setCellValueFactory(cellData -> cellData.getValue().getMsg());
+        name.setCellValueFactory(cellData -> cellData.getValue().getUsr());
+        message.setCellValueFactory(cellData -> cellData.getValue().getMsg());
         chatTextArea.setItems(getViewModelFactory().getChatViewModel().getList());
-        TextToBeSent.textProperty().bindBidirectional(getViewModelFactory().getChatViewModel().getMsg());
+        textToBeSent.textProperty().bindBidirectional(getViewModelFactory().getChatViewModel().getMsg());
     }
 
     @Override public void reset(){
@@ -35,7 +34,8 @@ public class ChatViewController extends ViewController {
         getViewHandler().openView(View.LOGIN);
     }
 
-    public void onSend(ActionEvent actionEvent) {
+    @FXML
+    private void onSend(ActionEvent actionEvent) {
         getViewModelFactory().getChatViewModel().addMessage();
     }
 }

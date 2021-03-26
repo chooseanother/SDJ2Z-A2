@@ -26,12 +26,14 @@ public class RegisterViewController extends ViewController
     getViewModelFactory().getRegisterViewModel().clear();
   }
 
-  public void onBack(ActionEvent actionEvent)
+  @FXML
+  private void onBack(ActionEvent actionEvent)
   {
     getViewHandler().openView(View.LOGIN);
   }
 
-  public void onRegister(ActionEvent actionEvent) throws Exception
+  @FXML
+  private void onRegister(ActionEvent actionEvent) throws Exception
   {
     if (viewModel.register())
     {

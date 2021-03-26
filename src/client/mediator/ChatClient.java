@@ -20,10 +20,8 @@ public class ChatClient implements Model
   private PrintWriter out;
   private Gson gson;
   private PropertyChangeSupport property;
-  private ArrayList<MessagePackage> masagePackage;
-  private MessagePackage messageListPackage;
+  private ArrayList<MessagePackage> messagePackages;
   private Model model;
-
   private boolean waiting;
 
   public ChatClient(Model model, String host, int port) throws IOException
@@ -33,7 +31,7 @@ public class ChatClient implements Model
     out = new PrintWriter(socket.getOutputStream(), true);
     gson = new Gson();
     this.model = model;
-    masagePackage = new ArrayList<>();
+    messagePackages = new ArrayList<>();
     property = new PropertyChangeSupport(this);
 
     ChatClientReceiver ccr = new ChatClientReceiver(this, in);
@@ -56,7 +54,7 @@ public class ChatClient implements Model
     MessagePackage msg = gson.fromJson(json, MessagePackage.class);
     if (waiting)
     {
-      masagePackage.add(msg);
+      messagePackages.add(msg);
       notify();
     }
     else
@@ -69,7 +67,7 @@ public class ChatClient implements Model
   private synchronized MessagePackage waitingForReply()
   {
     waiting = true;
-    while (masagePackage.isEmpty())
+    while (messagePackages.isEmpty())
     {
       try
       {
@@ -81,7 +79,7 @@ public class ChatClient implements Model
       }
     }
     waiting = false;
-    return masagePackage.remove(0);
+    return messagePackages.remove(0);
   }
 
   @Override public void addListener(PropertyChangeListener listener)
