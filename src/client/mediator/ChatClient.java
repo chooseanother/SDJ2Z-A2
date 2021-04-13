@@ -59,8 +59,7 @@ public class ChatClient implements Model
     }
     else
     {
-      property.firePropertyChange(msg.getType(), msg.getMessage().getMsg(),
-          msg.getMessage().getUsr());
+      property.firePropertyChange(msg.getType(), null, msg.getMessage());
     }
   }
 
@@ -102,9 +101,7 @@ public class ChatClient implements Model
     {
       throw new Exception(msg.getMessage().getUsr());
     }
-    property.firePropertyChange(msg.getType(), msg.getMessage().getMsg(),
-        msg.getMessage().getUsr());
-
+    property.firePropertyChange(msg.getType(), null, msg.getMessage());
   }
 
   @Override

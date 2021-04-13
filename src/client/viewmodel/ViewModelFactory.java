@@ -11,7 +11,7 @@ public class ViewModelFactory {
         UserInformation userInformation = new UserInformation();
         this.chatViewModel = new ChatViewModel(model,userInformation);
         this.loginViewModel = new LoginViewModel(model,userInformation);
-        this.logViewModel = new LogViewModel(model);
+        this.logViewModel = new LogViewModel(model,userInformation);
         this.registerViewModel = new RegisterViewModel(model,userInformation);
     }
 

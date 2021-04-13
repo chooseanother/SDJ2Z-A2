@@ -69,6 +69,15 @@ public class ChatServerClientHandler implements Runnable, PropertyChangeListener
             }
             catch (Exception e){
                 e.printStackTrace();
+                try {
+                    in.close();
+                    out.close();
+                    socket.close();
+
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                running = false;
                 //close()
             }
         }

@@ -1,5 +1,6 @@
 package client.viewmodel;
 
+import client.model.Message;
 import client.model.Model;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -11,10 +12,12 @@ import java.beans.PropertyChangeListener;
 public class LogViewModel implements PropertyChangeListener {
     private Model model;
     private ObservableList<String> logText;
+    private UserInformation userInformation;
 
-    public LogViewModel(Model model){
+    public LogViewModel(Model model, UserInformation userInformation){
         this.model = model;
         this.model.addListener(this);
+        this.userInformation = userInformation;
         logText = FXCollections.observableArrayList();
     }
 
@@ -31,6 +34,9 @@ public class LogViewModel implements PropertyChangeListener {
         Platform.runLater(() -> {
             if (evt.getPropertyName().equals("Log")) {
                 logText.add((String)evt.getNewValue());
+            }
+            else if (evt.getPropertyName().equals("Message") && !((Message)evt.getNewValue()).getUsr().equals(userInformation.getUser())){
+                model.addLog(((Message) evt.getNewValue()).toString());
             }
         });
     }

@@ -36,6 +36,8 @@ public class ChatViewController extends ViewController {
 
     @FXML
     private void onSend(ActionEvent actionEvent) {
-        getViewModelFactory().getChatViewModel().addMessage();
+        if (textToBeSent.textProperty().getValue() != null){
+            getViewModelFactory().getChatViewModel().addMessage();
+        }
     }
 }

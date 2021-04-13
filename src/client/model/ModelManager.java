@@ -15,7 +15,6 @@ public class ModelManager implements Model,PropertyChangeListener {
     private ChatClient client;
     private LogMultiton multiton;
 
-
     public ModelManager() throws IOException {
         this.property = new PropertyChangeSupport(this);
         this.client = new ChatClient(this, HOST, PORT);
@@ -30,8 +29,8 @@ public class ModelManager implements Model,PropertyChangeListener {
 
     public void addLog(String log) {
         multiton = LogMultiton.getInstance(new DateTime().getSortableDate());
-        multiton.addLog(log);
-        property.firePropertyChange("Log" ,null, log);
+        String logLine = multiton.addLog(log);
+        property.firePropertyChange("Log" ,null, logLine);
     }
 
     @Override public boolean login(String name, String password)
@@ -60,6 +59,6 @@ public class ModelManager implements Model,PropertyChangeListener {
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        property.firePropertyChange(evt.getPropertyName(), evt.getOldValue(), evt.getNewValue());
+        property.firePropertyChange(evt.getPropertyName(), null, evt.getNewValue());
     }
 }

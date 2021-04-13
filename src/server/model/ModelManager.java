@@ -26,8 +26,8 @@ public class ModelManager implements Model {
 
     public void addLog(String log) {
         multiton = LogMultiton.getInstance(new DateTime().getSortableDate());
-        multiton.addLog(log);
-        property.firePropertyChange("Log" ,null, log);
+        String longLine = multiton.addLog(log);
+        property.firePropertyChange("Log" ,null, longLine);
     }
 
     @Override

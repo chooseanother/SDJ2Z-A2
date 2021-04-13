@@ -53,7 +53,7 @@ public class ChatViewModel implements PropertyChangeListener {
         {
             if (evt.getPropertyName().equals("Message")) {
                 try {
-                    Message m = new Message((String) evt.getNewValue(),(String) evt.getOldValue());
+                    Message m = (Message) evt.getNewValue();
                     SendMessage(m);
                 } catch (Exception e) {
                     e.printStackTrace();

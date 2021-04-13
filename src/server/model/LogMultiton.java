@@ -31,11 +31,12 @@ public class LogMultiton {
         return instance;
     }
 
-    public void addLog(String log) {
+    public String addLog(String log) {
         LogLine logLines = new LogLine(log);
         list.add(logLines);
         addToFile(logLines);
         System.out.println(logLines);
+        return logLines.toString();
     }
 
     public ArrayList<LogLine> getAll() {
@@ -54,7 +55,7 @@ public class LogMultiton {
 
         try
         {
-            out = new BufferedWriter(new FileWriter(filename, true));
+            out = new BufferedWriter(new FileWriter(filename+"-server-log", true));
             out.write(log + "\n");
         } catch (Exception e) {
             e.printStackTrace();
