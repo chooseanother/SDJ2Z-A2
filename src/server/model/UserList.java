@@ -28,12 +28,17 @@ public class UserList
     writer = new FileWriter(file, true);
     this.userLists = new ArrayList<>();
 
-    insertFileIntoModule();
+
+    readUsersFromFile();
+
   }
 
-  public void insertFileIntoModule() throws IOException
+
+  public void readUsersFromFile() throws IOException
   {
-    addDummyData();
+    if (new BufferedReader(new FileReader(filename)).readLine() == null) {
+      addDummyData();
+    }
     fileList = new ArrayList<>(Arrays.asList(bufferedReader.readLine().split(";:;")));
     for (int x = 0; x < fileList.size(); x = x + 2){
       userLists.add(new User(fileList.get(x), fileList.get(x+1)));
