@@ -5,7 +5,7 @@ import java.beans.PropertyChangeSupport;
 import java.io.IOException;
 
 public class ModelManager implements Model {
-    MessageList messageList;
+    private MessageList messageList;
     private PropertyChangeSupport property;
     private UserList userList;
     private LogMultiton multiton;
@@ -32,9 +32,11 @@ public class ModelManager implements Model {
 
     @Override
     public boolean login(String usr, String pwd) throws Exception {
-        boolean result = userList.login(usr, pwd);
-        property.firePropertyChange("Login",usr,"Success");
-        return result;
+        if (!userList.userExist(usr,pwd)){
+            throw new Exception("Wrong username or password");
+        }
+        property.firePropertyChange("Login",usr,new Message(usr,"Success"));
+        return true;
     }
 
     @Override
